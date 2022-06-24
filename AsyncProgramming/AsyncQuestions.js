@@ -1,5 +1,6 @@
 
-
+console.log("JS file Loaded....")
+Q2()
 // Q1 -Print "Hello, world" with a delay of 3 seconds
  
   function Q1(){
@@ -12,5 +13,53 @@
 
   };
 
-  //Q2 -
+//Q2 -Print numbers from 1 to 10 with delay of 1 second between each value being printed
+
+   function Q2(){
+
+    // for(let i=1;i<=10;i++){
+    
+    //    delay(i).then((i)=>{
+    //   console.log(i)
+    //    })
+
+    // }
+   
+    // function delay(i){
+    //  const tempI=i;
+    //   return new Promise((res,rej)=>{
+    //      setTimeout((i)=>{
+    //       console.log(tempI)
+    //        res(tempI);         
+    //      },i*1000);
+    //   })
+
+    // }
+
+    /**This will run fine for input like 10 but if no is 1000 then delay between 2 nos will/can b less then 1 */
+      // for(let i=1;i<=10;i++){
+      //   setTimeout(()=>{
+      //   console.log(i);
+      //   },i*1);
+      // }
+
+      /**We will try recursice approach, it will work for any input */
+
+      delay(1);
+      function delay(i){
+      const tempi=i;
+       setTimeout(()=>{
+        console.log(tempi)
+       
+        if(tempi<=10)delay(tempi+1);
+
+      },1000);
+      /**End  */
+
+       
+
+      }
+
+
+   };
  
