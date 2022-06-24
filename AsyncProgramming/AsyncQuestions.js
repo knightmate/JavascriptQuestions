@@ -109,4 +109,55 @@ const timerObj=timer();
 
 }
 
-Q4()
+//Q5 Execute an array of asynchronous functions one after the other in sequence using callbacks
+
+
+function Q5(){
+
+  function fn1(callBack){
+
+    setTimeout(()=>{
+    
+      console.log("F1")
+      callBack();
+
+    },5000)
+
+  }
+
+  function fn2(callBack){
+   
+    setTimeout(()=>{
+console.log("F2");
+      callBack();
+    },3000)
+
+  }
+
+  function fn3(callBack){
+   
+    setTimeout(()=>{
+     console.log("F3");
+      callBack();
+    },6000)
+
+  }
+
+   function asyncCaller(functionArr){
+    
+          function caller(fAr,index){
+            const arr=fAr;
+            const tempindex=index;
+           if(index<functionArr.length)arr[tempindex](()=>{
+            console.log("CallBack called",tempindex);
+            caller(arr,tempindex+1);
+           })
+          }      
+          caller(functionArr,0);
+    
+   }
+
+   asyncCaller([fn1,fn2,fn3]);
+
+}
+Q5()
