@@ -1,6 +1,6 @@
 
 console.log("JS file Loaded....")
-Q2()
+ 
 // Q1 -Print "Hello, world" with a delay of 3 seconds
  
   function Q1(){
@@ -63,3 +63,50 @@ Q2()
 
    };
  
+   //Q3 Q. Write a utility which prints numbers starting from an initial value 
+   //and increment in steps which can be started and stopped by the user, any number of times
+
+
+   function Q4(){
+
+      function timer(){
+         let timerId;
+        const startTimer=(startTime)=>{
+           let t=startTime;
+          timerId=setInterval(()=>{
+           console.log(t);
+           t++;
+
+          },1000);
+      
+          
+
+        }
+
+        const stopTimer=()=>{
+          clearInterval(timerId);
+          }
+        return {
+          startTimer,
+          stopTimer
+        }
+
+      };
+ 
+
+
+const timerObj=timer();
+  
+  timerObj.startTimer(1);
+
+  setTimeout(()=>{
+
+    timerObj.stopTimer();
+
+  },5000);
+ 
+
+
+}
+
+Q4()
