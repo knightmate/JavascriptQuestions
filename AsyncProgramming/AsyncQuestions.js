@@ -198,17 +198,95 @@ console.log("F2");
   }
   
   
-    async1.then(async1).then(()=>{},()=>{
+    async1.then(async1).then(()=>{
+
+    },()=>{
       //fail
-      
-    }).then(async3).then(()=>{},()=>{
+
+    }).then(async3).then(()=>{
+
+    },()=>{
       //fail
 
     }).catch((error)=>{
-
-      console.log("Error",error);
-
+      
+       console.log("Error",error);
+       
     })
    
 
  }
+
+
+ function Q7(){
+
+
+  function async1(){
+
+    return new Promise((res,rej)=>{
+
+       
+    res(1)
+    })
+
+  };
+
+  function async2(){
+    return new Promise((res,rej)=>{
+       
+      setTimeout(()=>{
+        res(2)
+      },2000)
+       
+
+    })
+
+  }
+
+
+  function async3(){
+    return new Promise((res,rej)=>{
+    
+     res(3)
+
+  })}
+
+
+
+    const asyncArr=[async1,async2,async3];
+   
+
+    const promiseArr=asyncArr.map((asyncItem)=>{
+      
+         return  asyncItem();
+        
+    });
+     
+      const promiseHolder=[Promise.resolve()];
+      let idxPromise=0;
+      promiseArr.map((async,index)=>{
+           const idx=index; 
+            
+           const promiseObj=promiseHolder[idxPromise].then((res)=>{
+            return promiseArr[idx];   
+          }).then((data)=>console.log("data",data))
+          idxPromise++;
+           promiseHolder.push(promiseObj)
+
+      })
+        
+     
+//     promiseArr.reduce((initialVal,async)=>{
+//          console.log(initialVal)
+//        const status=   initialVal.then((res)=>{
+//          return  async;
+//          }).then((data)=>console.log(data))
+// console.log("status",status)
+//          return status;
+
+//     },Promise.resolve());
+
+
+ }
+
+ Q7()

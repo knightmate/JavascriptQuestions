@@ -7,6 +7,7 @@ JavaScript challenges on Asynchronous programming - challenges
    * Q. Print numbers from 1 to 10 with delay of 1 second between each value being printed using setInterval
    * Q. Print numbers from 10 to 1 with delay of 1 second between each value being printed using setTimeout using pre ES6 features only
     Q. Write a utility which prints numbers starting from an initial value and increment in steps which can be started and stopped by the user, any number of times
+    
     Q. Execute an array of asynchronous functions one after the other in sequence using callbacks
 
     Q. Execute the given list of asynchronous functions in parallel and return the results as an array to the callback
