@@ -145,19 +145,70 @@ console.log("F2");
 
    function asyncCaller(functionArr){
     
-          function caller(fAr,index){
-            const arr=fAr;
-            const tempindex=index;
-           if(index<functionArr.length)arr[tempindex](()=>{
-            console.log("CallBack called",tempindex);
-            caller(arr,tempindex+1);
-           })
+          function caller(){
+            const arr=functionArr.shift();
+           
+            if(typeof(arr)=="function"){
+              arr(caller)
+            }
+
           }      
-          caller(functionArr,0);
+          caller();
     
    }
 
    asyncCaller([fn1,fn2,fn3]);
 
 }
-Q5()
+ 
+
+ /**
+  * Execute 3 asynchronous functions one after the other in sequence using async await and do not terminate on failure
+  */
+ function Q6(){
+     
+ 
+  function async1(){
+
+    return new Promise((res,rej)=>{
+
+      setTimeout(()=>res(),1000);
+    return async2;
+    })
+
+  };
+
+  function async2(){
+    return new Promise((res,rej)=>{
+
+      return async3
+
+    })
+
+  }
+
+
+  function async3(){
+    return new Promise((res,rej)=>{
+
+      setTimeout(()=>res(),1000);
+
+    })
+
+  }
+  
+  
+    async1.then(async1).then(()=>{},()=>{
+      //fail
+      
+    }).then(async3).then(()=>{},()=>{
+      //fail
+
+    }).catch((error)=>{
+
+      console.log("Error",error);
+
+    })
+   
+
+ }
